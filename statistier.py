@@ -7,7 +7,7 @@ def get_daily_datas(path='log.txt'):
 	with open(path, 'r', encoding='UTF-8') as f:
 		lines = f.readlines()
 		lines = list(filter(lambda line: line.strip() != '', lines))
-		lines = list(map(lambda line: line[:len(line) - 1], lines))
+		lines = list(map(lambda line: line if line[-1] != '\n' else line[:len(line) - 1], lines))
 		
 		last_index = 0
 		pattern = r"[0-9]+"
